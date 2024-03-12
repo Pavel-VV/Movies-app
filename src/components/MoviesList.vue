@@ -7,7 +7,9 @@
           <MovieItem :movie="movie" />
         </BCol>
       </template>
-      <template v-else>Is empty</template>
+      <template v-else>
+        <div>Is empty</div>
+      </template>
     </BRow>
   </BContainer>
 </template>
