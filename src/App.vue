@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <PosterBg :poster="poster" />
+    <PosterBg :poster="posterBg" />
     <MoviesList :list="moviesList" @changePoster="onChangePoster" />
   </div>
 </template>
@@ -17,7 +17,7 @@ export default {
     PosterBg,
   },
   data: () => ({
-    poster: "",
+    posterBg: "",
   }),
   mounted() {},
   computed: {
@@ -26,7 +26,7 @@ export default {
   methods: {
     ...mapActions("movies", ["fetchMovies"]),
     onChangePoster(poster) {
-      this.poster = poster;
+      this.posterBg = poster;
     },
   },
 };
@@ -40,4 +40,3 @@ export default {
   -moz-osx-font-smoothing: grayscale;
 }
 </style>
-// 16:37
