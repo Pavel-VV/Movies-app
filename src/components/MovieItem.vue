@@ -8,10 +8,14 @@
       </div>
       <div class="movie-item-controls row no-gutters d-flex">
         <div class="col pr-2">
-          <BButton size="md" block variant="outline-light">Edit</BButton>
+          <BButton size="md" block variant="outline-light" class="button"
+            >Edit
+          </BButton>
         </div>
         <div class="col pl-2">
-          <BButton size="md" block variant="outline-light">Remove</BButton>
+          <BButton size="md" block variant="outline-light" class="button"
+            >Remove
+          </BButton>
         </div>
       </div>
     </div>
@@ -44,7 +48,7 @@ export default {
   border-radius: 5px;
   overflow: hidden;
   transition: all 0.2s ease;
-  height: 400px;
+  height: 450px;
 }
 
 .movie-item:hover {
@@ -84,5 +88,9 @@ export default {
 .movie-year {
   font-size: 14px;
   color: #fff;
+}
+
+.button {
+  width: 100%;
 }
 </style>
