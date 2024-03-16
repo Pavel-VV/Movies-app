@@ -2,6 +2,7 @@
   <div id="app">
     <PosterBg :poster="posterBg" />
     <MoviesList :list="moviesList" @changePoster="onChangePoster" />
+    <MoviesPagination />
   </div>
 </template>
 
@@ -9,12 +10,14 @@
 import { mapActions, mapGetters } from "vuex";
 import MoviesList from "./components/MoviesList";
 import PosterBg from "./components/PosterBg";
+import MoviesPagination from "./components/MoviesPagination";
 
 export default {
   name: "App",
   components: {
     MoviesList,
     PosterBg,
+    MoviesPagination,
   },
   data: () => ({
     posterBg: "",
@@ -40,3 +43,4 @@ export default {
   -moz-osx-font-smoothing: grayscale;
 }
 </style>
+// 11:15
