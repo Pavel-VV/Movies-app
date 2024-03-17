@@ -1,7 +1,7 @@
 <template>
   <div class="movies-pagination">
     <BPagination
-      v-model="currentPage"
+      v-model="currentPageSet"
       :total-rows="total"
       :per-page="perPage"
       prev-text="Prev"
@@ -13,11 +13,30 @@
 <script>
 export default {
   name: "MoviesPagination",
-  data: () => ({
-    currentPage: 1,
-    total: 100,
-    perPage: 12,
-  }),
+  props: {
+    currentPage: {
+      type: Number,
+      default: 1,
+    },
+    total: {
+      type: Number,
+      default: 1,
+    },
+    perPage: {
+      type: Number,
+      default: 1,
+    },
+  },
+  computed: {
+    currentPageSet: {
+      get() {
+        return this.currentPage;
+      },
+      set(value) {
+        this.$emit("changeCurrentPage", value);
+      },
+    },
+  },
 };
 </script>
 

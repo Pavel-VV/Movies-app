@@ -2,7 +2,12 @@
   <div id="app">
     <PosterBg :poster="posterBg" />
     <MoviesList :list="moviesList" @changePoster="onChangePoster" />
-    <MoviesPagination />
+    <MoviesPagination
+      :current-page="currentPage"
+      :per-page="moviesPerPage"
+      :total="moviesLength"
+      @changeCurrentPage="onChangeCurrentPage"
+    />
   </div>
 </template>
 
@@ -24,12 +29,20 @@ export default {
   }),
   mounted() {},
   computed: {
-    ...mapGetters("movies", ["moviesList"]),
+    ...mapGetters("movies", [
+      "moviesList",
+      "moviesLength",
+      "currentPage",
+      "moviesPerPage",
+    ]),
   },
   methods: {
-    ...mapActions("movies", ["fetchMovies"]),
+    ...mapActions("movies", ["setCurrentPage"]),
     onChangePoster(poster) {
       this.posterBg = poster;
+    },
+    onChangeCurrentPage(page) {
+      this.setCurrentPage(page);
     },
   },
 };
@@ -43,4 +56,4 @@ export default {
   -moz-osx-font-smoothing: grayscale;
 }
 </style>
-// 11:15
+// 23:43
