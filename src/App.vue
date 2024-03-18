@@ -43,6 +43,8 @@ export default {
     },
     onChangeCurrentPage(page) {
       console.log(this.$router);
+      this.$router.push({ query: { page } });
+      console.log(this.$route);
       this.setCurrentPage(page);
     },
   },
