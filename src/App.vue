@@ -42,6 +42,7 @@ export default {
       this.posterBg = poster;
     },
     onChangeCurrentPage(page) {
+      console.log(this.$router);
       this.setCurrentPage(page);
     },
   },
