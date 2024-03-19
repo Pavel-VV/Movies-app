@@ -65,4 +65,3 @@ export default {
   -moz-osx-font-smoothing: grayscale;
 }
 </style>
-// 23:43
