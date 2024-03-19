@@ -36,15 +36,19 @@ export default {
       "moviesPerPage",
     ]),
   },
+  created() {
+    if (this.$route.query.page) {
+      this.setCurrentPage(Number(this.$route.query.page));
+    } else this.setCurrentPage(1);
+    // this.setCurrentPage();
+  },
   methods: {
     ...mapActions("movies", ["setCurrentPage"]),
     onChangePoster(poster) {
       this.posterBg = poster;
     },
     onChangeCurrentPage(page) {
-      console.log(this.$router);
       this.$router.push({ query: { page } });
-      console.log(this.$route);
       this.setCurrentPage(page);
     },
   },
