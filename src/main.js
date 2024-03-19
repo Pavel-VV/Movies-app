@@ -11,10 +11,12 @@ Vue.use(Router);
 const router = new Router({
   mode: "history",
   base: process.env.BASE_URL,
-  router: {
-    path: "/",
-    component: App,
-  },
+  routes: [
+    {
+      path: "/",
+      component: App,
+    },
+  ],
 });
 
 new Vue({

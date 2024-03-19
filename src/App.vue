@@ -27,7 +27,13 @@ export default {
   data: () => ({
     posterBg: "",
   }),
-  mounted() {},
+  watch: {
+    "$route.query": {
+      handler: "onChangePage",
+      immediate: true,
+      deep: true,
+    },
+  },
   computed: {
     ...mapGetters("movies", [
       "moviesList",
@@ -36,20 +42,16 @@ export default {
       "moviesPerPage",
     ]),
   },
-  created() {
-    if (this.$route.query.page) {
-      this.setCurrentPage(Number(this.$route.query.page));
-    } else this.setCurrentPage(1);
-    // this.setCurrentPage();
-  },
   methods: {
     ...mapActions("movies", ["setCurrentPage"]),
+    onChangePage({ page = 1 }) {
+      this.setCurrentPage(Number(page));
+    },
     onChangePoster(poster) {
       this.posterBg = poster;
     },
     onChangeCurrentPage(page) {
       this.$router.push({ query: { page } });
-      this.setCurrentPage(page);
     },
   },
 };
