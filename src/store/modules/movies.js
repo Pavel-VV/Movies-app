@@ -9,7 +9,7 @@ function serializeResponse(movies) {
   }, {});
 }
 
-const { MOVIES, CURRENT_PAGE } = mutations;
+const { MOVIES, CURRENT_PAGE, REMOVE_MOVIE } = mutations;
 
 const moviesStore = {
   namespaced: true,
@@ -35,6 +35,9 @@ const moviesStore = {
     },
     [CURRENT_PAGE](state, value) {
       state.currentPage = value;
+    },
+    [REMOVE_MOVIE](state, index) {
+      state.top250IDs.splice(index, 1);
     },
   },
   actions: {
@@ -65,6 +68,14 @@ const moviesStore = {
     setCurrentPage({ commit, dispatch }, page) {
       commit(CURRENT_PAGE, page);
       dispatch("fetchMovies");
+    },
+    removeMovie({ commit, dispatch, state }, id) {
+      const indexMovie = state.top250IDs.indexOf(id);
+      if (indexMovie !== -1) {
+        console.log(indexMovie);
+        commit(REMOVE_MOVIE, indexMovie);
+        dispatch("fetchMovies");
+      }
     },
   },
 };
