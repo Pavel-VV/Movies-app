@@ -2,6 +2,7 @@
   <div id="app">
     <LoaderState />
     <PosterBg :poster="posterBg" />
+    <HeaderSearch />
     <MoviesList :list="moviesList" @changePoster="onChangePoster" />
     <MoviesPagination
       :current-page="currentPage"
@@ -18,6 +19,7 @@ import MoviesList from "./components/MoviesList";
 import PosterBg from "./components/PosterBg";
 import MoviesPagination from "./components/MoviesPagination";
 import LoaderState from "./components/LoaderState";
+import HeaderSearch from "./components/HeaderSearch";
 
 export default {
   name: "App",
@@ -26,6 +28,7 @@ export default {
     PosterBg,
     MoviesPagination,
     LoaderState,
+    HeaderSearch,
   },
   data: () => ({
     posterBg: "",
@@ -68,4 +71,4 @@ export default {
   -moz-osx-font-smoothing: grayscale;
 }
 </style>
-//11.37
+//17.30
