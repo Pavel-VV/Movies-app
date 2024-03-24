@@ -77,6 +77,22 @@ const moviesStore = {
         dispatch("fetchMovies");
       }
     },
+    async loadSearchMovies({ commit, dispatch }, query) {
+      try {
+        dispatch("toggleLoader", true, { root: true });
+        const response = await axios.get(`/?s=${query}`);
+        console.log(response.Search);
+        if (response.Error) {
+          throw Error(response.Error);
+        }
+        const movies = serializeResponse(response.Search);
+        commit(MOVIES, movies);
+      } catch (err) {
+        console.log(err.message);
+      } finally {
+        dispatch("toggleLoader", false, { root: true });
+      }
+    },
   },
 };
 

@@ -71,4 +71,4 @@ export default {
   -moz-osx-font-smoothing: grayscale;
 }
 </style>
-//17.30
+//26.31

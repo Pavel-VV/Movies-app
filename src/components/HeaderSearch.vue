@@ -3,15 +3,35 @@
     <BNavbar class="navbar-style" type="dark" variant="dark">
       <BContainer>
         <BNavbarBrand href="#">MovieDB</BNavbarBrand>
-        <BFormInput class="input-search" placeholder="Search"></BFormInput>
+        <BFormInput
+          class="input-search"
+          placeholder="Search"
+          v-model="searchValue"
+          debounce="500"
+        ></BFormInput>
       </BContainer>
     </BNavbar>
   </header>
 </template>
 
 <script>
+import { mapActions } from "vuex";
 export default {
   name: "HeaderSearch",
+  data: () => ({
+    searchValue: "",
+  }),
+  watch: {
+    searchValue: "searchMovies",
+  },
+  computed: {},
+  methods: {
+    ...mapActions("movies", ["loadSearchMovies"]),
+    searchMovies(input) {
+      console.log(input);
+      this.loadSearchMovies(input);
+    },
+  },
 };
 </script>
 
