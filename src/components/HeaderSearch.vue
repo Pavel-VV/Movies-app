@@ -26,10 +26,20 @@ export default {
   },
   computed: {},
   methods: {
-    ...mapActions("movies", ["loadSearchMovies"]),
+    ...mapActions("movies", [
+      "loadSearchMovies",
+      "fetchMovies",
+      "changeToggleSearch",
+    ]),
     searchMovies(input) {
       console.log(input);
-      this.loadSearchMovies(input);
+      if (input) {
+        this.loadSearchMovies(input);
+        this.changeToggleSearch(true);
+      } else {
+        this.fetchMovies();
+        this.changeToggleSearch(false);
+      }
     },
   },
 };

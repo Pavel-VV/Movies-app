@@ -1,6 +1,6 @@
 <template>
   <BContainer>
-    <h3 class="list-title">IMDB Top 250</h3>
+    <h3 class="list-title">{{ onTitle }}</h3>
     <BRow>
       <template v-if="isExist">
         <BCol cols="3" v-for="(movie, key) in list" :key="key">
@@ -20,7 +20,7 @@
 
 <script>
 import MovieItem from "./MovieItem";
-import { mapActions } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 
 export default {
   name: "MoviesList",
@@ -36,6 +36,10 @@ export default {
   computed: {
     isExist() {
       return Boolean(Object.keys(this.list).length);
+    },
+    ...mapGetters("movies", ["toggleSearch"]),
+    onTitle() {
+      return this.toggleSearch ? "Search movies" : "IMDB Top 250";
     },
   },
   methods: {

@@ -9,7 +9,7 @@ function serializeResponse(movies) {
   }, {});
 }
 
-const { MOVIES, CURRENT_PAGE, REMOVE_MOVIE } = mutations;
+const { MOVIES, CURRENT_PAGE, REMOVE_MOVIE, TOGGLE_SEARCH } = mutations;
 
 const moviesStore = {
   namespaced: true,
@@ -18,6 +18,7 @@ const moviesStore = {
     currentPage: 1,
     moviesPerPage: 12,
     movies: {},
+    toggleSearch: false,
   },
   getters: {
     slicedIDs:
@@ -28,6 +29,7 @@ const moviesStore = {
     moviesPerPage: ({ moviesPerPage }) => moviesPerPage,
     moviesList: ({ movies }) => movies,
     moviesLength: ({ top250IDs }) => top250IDs.length,
+    toggleSearch: ({ toggleSearch }) => toggleSearch,
   },
   mutations: {
     [MOVIES](state, value) {
@@ -38,6 +40,9 @@ const moviesStore = {
     },
     [REMOVE_MOVIE](state, index) {
       state.top250IDs.splice(index, 1);
+    },
+    [TOGGLE_SEARCH](state, bool) {
+      state.toggleSearch = bool;
     },
   },
   actions: {
@@ -92,6 +97,9 @@ const moviesStore = {
       } finally {
         dispatch("toggleLoader", false, { root: true });
       }
+    },
+    changeToggleSearch({ commit }, bool) {
+      commit(TOGGLE_SEARCH, bool);
     },
   },
 };
