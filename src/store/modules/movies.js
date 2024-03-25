@@ -9,12 +9,18 @@ function serializeResponse(movies) {
   }, {});
 }
 
-const { MOVIES, CURRENT_PAGE, REMOVE_MOVIE, TOGGLE_SEARCH } = mutations;
+const {
+  MOVIES,
+  CURRENT_PAGE,
+  REMOVE_MOVIE,
+  TOGGLE_SEARCH,
+  CHANGE_IDS_CURRENT_PAGE,
+} = mutations;
 
 const moviesStore = {
   namespaced: true,
   state: {
-    top250IDs: IDs,
+    top250IDs: "",
     currentPage: 1,
     moviesPerPage: 12,
     movies: {},
@@ -44,6 +50,10 @@ const moviesStore = {
     [TOGGLE_SEARCH](state, bool) {
       state.toggleSearch = bool;
     },
+    [CHANGE_IDS_CURRENT_PAGE](state, idArr) {
+      state.top250IDs = idArr;
+      state.currentPage = 1;
+    },
   },
   actions: {
     initMoviesStore: {
@@ -52,9 +62,10 @@ const moviesStore = {
       },
       root: true,
     },
-    async fetchMovies({ getters, commit, dispatch }) {
+    async fetchMovies({ getters, commit, dispatch, state }) {
       try {
         dispatch("toggleLoader", true, { root: true });
+        state.top250IDs = IDs;
         const { currentPage, moviesPerPage, slicedIDs } = getters;
         const from = currentPage * moviesPerPage - moviesPerPage;
         const to = currentPage * moviesPerPage;
@@ -92,6 +103,7 @@ const moviesStore = {
         }
         const movies = serializeResponse(response.Search);
         commit(MOVIES, movies);
+        commit(CHANGE_IDS_CURRENT_PAGE, response.Search);
       } catch (err) {
         console.log(err.message);
       } finally {

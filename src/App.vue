@@ -46,12 +46,15 @@ export default {
       "moviesLength",
       "currentPage",
       "moviesPerPage",
+      "toggleSearch",
     ]),
   },
   methods: {
     ...mapActions("movies", ["setCurrentPage"]),
     onChangePage({ page = 1 }) {
-      this.setCurrentPage(Number(page));
+      if (!this.toggleSearch) {
+        this.setCurrentPage(Number(page));
+      }
     },
     onChangePoster(poster) {
       this.posterBg = poster;
