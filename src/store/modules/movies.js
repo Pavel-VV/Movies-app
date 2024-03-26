@@ -110,6 +110,15 @@ const moviesStore = {
         commit(CHANGE_CURRENT_PAGE, 1);
       } catch (err) {
         console.log(err.message);
+        dispatch(
+          "setNotifMessage",
+          {
+            msg: err.message,
+            title: "Error",
+            variant: "danger",
+          },
+          { root: true }
+        );
       } finally {
         dispatch("toggleLoader", false, { root: true });
       }

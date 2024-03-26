@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <LoaderState />
+    <NotificationMessage />
     <PosterBg :poster="posterBg" />
     <HeaderSearch />
     <MoviesList :list="moviesList" @changePoster="onChangePoster" />
@@ -20,6 +21,7 @@ import PosterBg from "./components/PosterBg";
 import MoviesPagination from "./components/MoviesPagination";
 import LoaderState from "./components/LoaderState";
 import HeaderSearch from "./components/HeaderSearch";
+import NotificationMessage from "./components/NotificationMessage";
 
 export default {
   name: "App",
@@ -29,6 +31,7 @@ export default {
     MoviesPagination,
     LoaderState,
     HeaderSearch,
+    NotificationMessage,
   },
   data: () => ({
     posterBg: "",
@@ -74,3 +77,4 @@ export default {
   -moz-osx-font-smoothing: grayscale;
 }
 </style>
+// при поиске несуществующего фильма, затирать экран

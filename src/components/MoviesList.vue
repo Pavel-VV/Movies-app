@@ -47,12 +47,18 @@ export default {
       this.$emit("changePoster", poster);
     },
     ...mapActions("movies", ["removeMovie"]),
+    ...mapActions(["setNotifMessage"]),
     async onRemoveItem({ id, title }) {
       const isConfirm = await this.$bvModal.msgBoxConfirm(
         `Are you sure delete "${title}"?`
       );
       if (isConfirm) {
         this.removeMovie(id);
+        this.setNotifMessage({
+          msg: "success",
+          variant: "success",
+          title: "success",
+        });
       }
     },
   },
