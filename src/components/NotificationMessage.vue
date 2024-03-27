@@ -13,8 +13,7 @@ export default {
     ...mapGetters(["getNotifMessage"]),
   },
   methods: {
-    showNotification() {
-      const { msg, title, variant } = this.getNotifMessage;
+    showNotification({ msg, title, variant }) {
       this.$bvToast.toast(msg, {
         title,
         variant,

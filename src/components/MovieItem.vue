@@ -61,7 +61,7 @@ export default {
   border-radius: 5px;
   overflow: hidden;
   transition: all 0.2s ease;
-  height: 450px;
+  height: 330px;
 }
 
 .movie-item:hover {

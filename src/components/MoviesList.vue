@@ -1,5 +1,5 @@
 <template>
-  <BContainer>
+  <BContainer class="container-user">
     <h3 class="list-title">{{ onTitle }}</h3>
     <BRow>
       <template v-if="isExist">
@@ -12,7 +12,7 @@
         </BCol>
       </template>
       <template v-else>
-        <div>Is empty</div>
+        <div class="empty-list">Is empty</div>
       </template>
     </BRow>
   </BContainer>
@@ -55,7 +55,7 @@ export default {
       if (isConfirm) {
         this.removeMovie(id);
         this.setNotifMessage({
-          msg: "success",
+          msg: "Movie deleted successful",
           variant: "success",
           title: "success",
         });
@@ -70,5 +70,14 @@ export default {
   font-size: 50px;
   margin-bottom: 30px;
   color: #fff;
+}
+
+.container-user {
+  max-width: 960px;
+}
+
+.empty-list {
+  color: #fff;
+  font-size: 40px;
 }
 </style>

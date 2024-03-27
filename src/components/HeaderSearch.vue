@@ -1,7 +1,7 @@
 <template>
   <header class="header">
     <BNavbar class="navbar-style" type="dark" variant="dark">
-      <BContainer>
+      <BContainer class="container-user">
         <BNavbarBrand href="#">MovieDB</BNavbarBrand>
         <BFormInput
           class="input-search"
@@ -49,10 +49,16 @@ export default {
 .header {
   margin-bottom: 30px;
 }
+
+.container-user {
+  max-width: 960px;
+}
+
 .navbar-style {
   display: flex;
   background-color: rgba(0, 0, 0, 0.7) !important;
 }
+
 .input-search {
   width: 300px;
   color: #fff !important;

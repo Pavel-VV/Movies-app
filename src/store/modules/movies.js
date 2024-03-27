@@ -102,9 +102,13 @@ const moviesStore = {
         const response = await axios.get(`/?s=${query}`);
         console.log(response.Search);
         if (response.Error) {
+          commit(MOVIES, {});
+          commit(CHANGE_IDS, []);
+          commit(CHANGE_CURRENT_PAGE, 1);
           throw Error(response.Error);
         }
         const movies = serializeResponse(response.Search);
+        console.log(movies);
         commit(MOVIES, movies);
         commit(CHANGE_IDS, response.Search);
         commit(CHANGE_CURRENT_PAGE, 1);
@@ -114,8 +118,8 @@ const moviesStore = {
           "setNotifMessage",
           {
             msg: err.message,
-            title: "Error",
             variant: "danger",
+            title: "Error",
           },
           { root: true }
         );
