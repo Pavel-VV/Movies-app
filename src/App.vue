@@ -77,4 +77,3 @@ export default {
   -moz-osx-font-smoothing: grayscale;
 }
 </style>
-// при поиске несуществующего фильма, затирать экран
