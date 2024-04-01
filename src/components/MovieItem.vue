@@ -8,8 +8,13 @@
       </div>
       <div class="movie-item-controls row no-gutters d-flex">
         <div class="col pr-2">
-          <BButton size="md" block variant="outline-light" class="button"
-            >Edit
+          <BButton
+            size="md"
+            block
+            variant="outline-light"
+            class="button"
+            @click="showInfoModalEvent"
+            >Info
           </BButton>
         </div>
         <div class="col pl-2">
@@ -49,6 +54,9 @@ export default {
         id: this.movie.imdbID,
         title: this.movie.Title,
       });
+    },
+    showInfoModalEvent() {
+      this.$emit("showModalInfo", this.movie.imdbID);
     },
   },
 };

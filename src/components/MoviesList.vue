@@ -8,6 +8,7 @@
             :movie="movie"
             @mouseover.native="onMouseOver(movie.Poster)"
             @removeItem="onRemoveItem"
+            @showModalInfo="onShowMovieInfo"
           />
         </BCol>
       </template>
@@ -15,6 +16,9 @@
         <div class="empty-list">Is empty</div>
       </template>
     </BRow>
+    <BModal :id="movieInfoModalID" size="lg" hide-footer hide-header>
+      <p>Movie modal</p>
+    </BModal>
   </BContainer>
 </template>
 
@@ -33,6 +37,9 @@ export default {
       default: () => ({}),
     },
   },
+  data: () => ({
+    movieInfoModalID: "movie-info",
+  }),
   computed: {
     isExist() {
       return Boolean(Object.keys(this.list).length);
@@ -60,6 +67,10 @@ export default {
           title: "success",
         });
       }
+    },
+    onShowMovieInfo(id) {
+      console.log(id);
+      this.$bvModal.show(this.movieInfoModalID);
     },
   },
 };
