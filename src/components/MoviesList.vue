@@ -16,20 +16,28 @@
         <div class="empty-list">Is empty</div>
       </template>
     </BRow>
-    <BModal :id="movieInfoModalID" size="lg" hide-footer hide-header>
-      <p>Movie modal</p>
+    <BModal
+      body-class="modal-movie"
+      :id="movieInfoModalID"
+      size="lg"
+      hide-footer
+      hide-header
+    >
+      <MovieInfoModalContent :movie-info="selectedMovie" />
     </BModal>
   </BContainer>
 </template>
 
 <script>
 import MovieItem from "./MovieItem";
+import MovieInfoModalContent from "./MovieInfoModalContent";
 import { mapActions, mapGetters } from "vuex";
 
 export default {
   name: "MoviesList",
   components: {
     MovieItem,
+    MovieInfoModalContent,
   },
   props: {
     list: {
@@ -39,6 +47,7 @@ export default {
   },
   data: () => ({
     movieInfoModalID: "movie-info",
+    selectedMovieID: "",
   }),
   computed: {
     isExist() {
@@ -47,6 +56,9 @@ export default {
     ...mapGetters("movies", ["toggleSearch"]),
     onTitle() {
       return this.toggleSearch ? "Search movies" : "IMDB Top 250";
+    },
+    selectedMovie() {
+      return this.selectedMovieID ? this.list[this.selectedMovieID] : null;
     },
   },
   methods: {
@@ -69,7 +81,7 @@ export default {
       }
     },
     onShowMovieInfo(id) {
-      console.log(id);
+      this.selectedMovieID = id;
       this.$bvModal.show(this.movieInfoModalID);
     },
   },
@@ -90,5 +102,11 @@ export default {
 .empty-list {
   color: #fff;
   font-size: 40px;
+}
+</style>
+
+<style>
+.modal-movie {
+  padding: 0px !important;
 }
 </style>

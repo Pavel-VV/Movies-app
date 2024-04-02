@@ -77,4 +77,4 @@ export default {
   -moz-osx-font-smoothing: grayscale;
 }
 </style>
-// 12.03
+// 28.19
