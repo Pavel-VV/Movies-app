@@ -23,7 +23,10 @@
       hide-footer
       hide-header
     >
-      <MovieInfoModalContent :movie-info="selectedMovie" />
+      <MovieInfoModalContent
+        :movie-info="selectedMovie"
+        @closeModal="closeModalInfo"
+      />
     </BModal>
   </BContainer>
 </template>
@@ -58,7 +61,7 @@ export default {
       return this.toggleSearch ? "Search movies" : "IMDB Top 250";
     },
     selectedMovie() {
-      return this.selectedMovieID ? this.list[this.selectedMovieID] : null;
+      return this.selectedMovieID ? this.list[this.selectedMovieID] : {};
     },
   },
   methods: {
@@ -83,6 +86,10 @@ export default {
     onShowMovieInfo(id) {
       this.selectedMovieID = id;
       this.$bvModal.show(this.movieInfoModalID);
+    },
+    closeModalInfo() {
+      this.selectedMovieID = null;
+      this.$bvModal.hide(this.movieInfoModalID);
     },
   },
 };
