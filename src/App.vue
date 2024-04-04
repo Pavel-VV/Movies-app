@@ -77,4 +77,4 @@ export default {
   -moz-osx-font-smoothing: grayscale;
 }
 </style>
-// 34.00
+// 44.40

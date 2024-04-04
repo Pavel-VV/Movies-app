@@ -11,7 +11,21 @@
             <div class="movie-poster-style" :style="posterStyle"></div>
           </div>
         </BCol>
-        <BCol sm="8"></BCol>
+        <BCol sm="8">
+          <div class="movie-content-wrap">
+            <h3 class="movie-title">{{ movieInfo.Title }}</h3>
+            <BFormRating
+              class="movie-rating"
+              v-model="movieRating"
+              readonly
+              stars="10"
+              no-border
+              show-value
+              show-value-max
+              precision="1"
+            />
+          </div>
+        </BCol>
       </BRow>
     </div>
   </div>
@@ -42,6 +56,9 @@ export default {
       return this.movieInfo
         ? `url(${this.movieInfo.Poster})`
         : this.backgroundDefault;
+    },
+    movieRating() {
+      return this.movieInfo.imdbRating;
     },
   },
 };
@@ -88,5 +105,39 @@ export default {
   height: 100%;
   background-size: cover;
   background-position: center, center;
+}
+
+.movie-title {
+  font-size: 3.5rem;
+  font-weight: 300;
+  line-height: 1.2;
+}
+
+.movie-rating {
+  padding: 0px !important;
+}
+
+.movie-rating:focus {
+  box-shadow: none;
+}
+
+.movie-rating >>> .b-rating-star .b-rating-icon {
+  color: #cad106 !important;
+}
+
+.movie-rating >>> .b-rating-star,
+.movie-rating >>> .b-rating-value {
+  flex-grow: 0 !important;
+  padding: 0px;
+  font-size: 1.3rem;
+  font-weight: 300;
+}
+
+.movie-rating >>> .b-rating-star + .b-rating-star {
+  margin-left: 4px;
+}
+
+.movie-rating >>> .b-rating-value {
+  margin-left: 10px;
 }
 </style>

@@ -17,6 +17,7 @@
       </template>
     </BRow>
     <BModal
+      class="modal-movie2"
       body-class="modal-movie"
       :id="movieInfoModalID"
       size="lg"
