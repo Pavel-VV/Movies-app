@@ -30,7 +30,7 @@ export default {
 <style scoped>
 .background-poster {
   position: absolute;
-  min-height: 100vh;
+  /* height: 100vh; */
   top: 0;
   left: 0;
   right: 0;

@@ -105,6 +105,7 @@ export default {
 
 .container-user {
   max-width: 960px;
+  margin-bottom: 30px;
 }
 
 .empty-list {

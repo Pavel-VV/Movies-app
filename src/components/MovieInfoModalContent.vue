@@ -24,6 +24,49 @@
               show-value-max
               precision="1"
             />
+            <p class="movie-plot">{{ movieInfo.Plot }}</p>
+            <div class="mt-3 mb-4">
+              <BBadge class="movie-badge" variant="success">{{
+                movieInfo.Year
+              }}</BBadge>
+              <BBadge class="movie-badge" variant="success">{{
+                movieInfo.Genre
+              }}</BBadge>
+              <BBadge class="movie-badge" variant="success">{{
+                movieInfo.Language
+              }}</BBadge>
+              <BBadge class="movie-badge" variant="success">{{
+                movieInfo.Runtime
+              }}</BBadge>
+            </div>
+            <table class="table small">
+              <tbody>
+                <tr>
+                  <th>Production</th>
+                  <td>{{ movieInfo.Production }}</td>
+                </tr>
+                <tr>
+                  <th>Country</th>
+                  <td>{{ movieInfo.Country }}</td>
+                </tr>
+                <tr>
+                  <th>Director</th>
+                  <td>{{ movieInfo.Director }}</td>
+                </tr>
+                <tr>
+                  <th>Writer</th>
+                  <td>{{ movieInfo.Writer }}</td>
+                </tr>
+                <tr>
+                  <th>Actors</th>
+                  <td>{{ movieInfo.Actors }}</td>
+                </tr>
+                <tr>
+                  <th>Awards</th>
+                  <td>{{ movieInfo.Awards }}</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </BCol>
       </BRow>
@@ -82,6 +125,7 @@ export default {
 
 .close-icon {
   cursor: pointer;
+  font-size: 24px;
 }
 
 .movie-content-info {
@@ -138,6 +182,16 @@ export default {
 }
 
 .movie-rating >>> .b-rating-value {
+  margin-left: 10px;
+}
+
+.movie-plot {
+  font-size: 1.25rem;
+  font-weight: 300;
+}
+
+.badge {
+  background-color: green;
   margin-left: 10px;
 }
 </style>

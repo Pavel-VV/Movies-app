@@ -71,6 +71,9 @@ export default {
 
 <style>
 #app {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
   position: relative;
   font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
